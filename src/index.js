@@ -30,14 +30,13 @@ function onSearchCountry(e) {
           return renderMarkupOneCountry(data);
         }
       })
-      .then(updateList)
       .catch(onError);
     // .finally(() => inputName.reset());
   }
 }
 
 function renderMarkupCountry(countries) {
-  return countries
+  const markup = countries
     .map(
       country =>
         `<div class="country">
@@ -45,10 +44,11 @@ function renderMarkupCountry(countries) {
     </div>`
     )
     .join('');
+  updateList(markup);
 }
 
 function renderMarkupOneCountry(countries) {
-  return countries
+  const markup = countries
     .map(
       country =>
         `<div class="country">
@@ -65,7 +65,9 @@ function renderMarkupOneCountry(countries) {
     </div>`
     )
     .join('');
+  updateList(markup);
 }
+
 function updateList(markup) {
   countryList.innerHTML = markup;
 }
