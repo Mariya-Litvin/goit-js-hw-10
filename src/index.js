@@ -5,6 +5,7 @@ import Notiflix from 'notiflix';
 
 const inputName = document.getElementById('search-box');
 const countryList = document.querySelector('.country-list');
+const countryInfo = document.querySelector('.country-info');
 const DEBOUNCE_DELAY = 300;
 
 inputName.addEventListener('input', debounce(onSearchCountry, DEBOUNCE_DELAY));
@@ -39,12 +40,12 @@ function renderMarkupCountry(countries) {
   const markup = countries
     .map(
       country =>
-        `<div class="country">
+        `<li class="country__card">
     <img class="country__img" src="${country.flags.svg}" alt="Flag of ${country.name.official}" width="30" height="20"> <b>${country.name.official}</b></img>
-    </div>`
+    </li>`
     )
     .join('');
-  updateList(markup);
+  countryList.innerHTML = markup;
 }
 
 function renderMarkupOneCountry(countries) {
@@ -57,19 +58,19 @@ function renderMarkupOneCountry(countries) {
         }" width="40" height="30"> <span class="country__name">${
           country.name.official
         }</span></img>
-    <h2 class="country__capital">Capital: ${country.capital}</h2>
-    <h3 class="country__population">Population: ${country.population}</h3>
-    <p class="country__languages"><b>Languages: ${Object.values(
+    <h2 class="country__capital">Capital: <span class="result">${
+      country.capital
+    }</span></h2>
+    <h3 class="country__population">Population: <span class="result">${
+      country.population
+    }</span></h3>
+    <p class="country__languages"><b>Languages: <span class="result">${Object.values(
       country.languages
-    )}</b></p>
+    )}</span></b></p>
     </div>`
     )
     .join('');
-  updateList(markup);
-}
-
-function updateList(markup) {
-  countryList.innerHTML = markup;
+  countryInfo.innerHTML = markup;
 }
 
 function onError(err) {
@@ -78,4 +79,5 @@ function onError(err) {
 
 function clearMarkup() {
   countryList.innerHTML = '';
+  countryInfo.innerHTML = '';
 }

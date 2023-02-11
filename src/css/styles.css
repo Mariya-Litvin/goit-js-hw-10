@@ -26,9 +26,23 @@ img + span {
 }
 
 ul {
-  margin: 0;
+  list-style: none;
 }
 
 .country {
+  margin-left: 40px;
+}
+
+.country__card {
   margin-bottom: 10px;
+}
+
+.country__capital,
+.country__population,
+.country__languages {
+  font-size: 24px;
+}
+
+.result {
+  font-weight: 500;
 }
