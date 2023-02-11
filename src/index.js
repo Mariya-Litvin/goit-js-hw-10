@@ -14,7 +14,7 @@ function onSearchCountry(e) {
 
   const input = e.target;
   const value = input.value.trim();
-  console.log(value.length);
+  // console.log(value.length);
   clearMarkup();
 
   if (value !== '') {
@@ -33,9 +33,6 @@ function onSearchCountry(e) {
       .then(updateList)
       .catch(onError);
     // .finally(() => inputName.reset());
-  }
-  if (value === '') {
-    clearMarkup();
   }
 }
 
