@@ -28,3 +28,7 @@ img + span {
 ul {
   margin: 0;
 }
+
+.country {
+  margin-bottom: 10px;
+}
