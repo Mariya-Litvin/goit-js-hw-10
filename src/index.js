@@ -66,7 +66,7 @@ function renderMarkupOneCountry(countries) {
     }</span></h3>
     <p class="country__languages"><b>Languages: <span class="result">${Object.values(
       country.languages
-    )}</span></b></p>
+    ).join(', ')}</span></b></p>
     </div>`
     )
     .join('');
